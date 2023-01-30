@@ -13,3 +13,10 @@ body{
 #movieRow{
   box-shadow: rgb(13 36 102 / 60%) 6px 6px 34px 3px;
 }
+.text-star-yellow{
+  color:rgb(245, 197, 24);
+}
+.video {
+  aspect-ratio: 16 / 9;
+  width: 100%;
+}

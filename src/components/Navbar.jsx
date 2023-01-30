@@ -39,24 +39,24 @@ const Navbar = () => {
             ></path>
           </svg>
         </button>
-        <div className="collapse navbar-collapse items-center bg-black lg:bg-transparent" id="navbarSupportedContent1">
-          <ul className="navbar-nav flex flex-col pl-0 list-style-none mr-auto items-center">
-            <li className="nav-item p-2">
-              <a className="nav-link flex text-white hover:text-blue-600 p-5 w-full text-center duration-200" href="#">FILMS</a>
+        <div className="collapse navbar-collapse items-center bg-black lg:bg-transparent text-xl" id="navbarSupportedContent1">
+          <ul className="navbar-nav flex flex-col pl-0 list-style-none mr-auto items-center md:gap-6 w-full">
+            <li className="nav-item w-full text-center text-white hover:bg-white hover:text-blue-600 p-2 px-6 duration-200 rounded-lg cursor-pointer">
+              <a className="nav-link" href="#">FILMS</a>
             </li>
-            <li className="nav-item p-2">
-              <a className="nav-link flex text-white hover:text-blue-600 p-5 w-full text-center duration-200" href="#">TICKETS</a>
+            <li className="nav-item w-full text-center text-white hover:bg-white hover:text-blue-600 p-2 px-6 duration-200 rounded-lg cursor-pointer">
+              <a className="nav-link" href="#">TICKETS</a>
             </li>
-            <li className="nav-item p-2">
-              <a className="nav-link flex text-white hover:text-blue-600 p-5 w-full text-center duration-200" href="#">TODAY</a>
+            <li className="nav-item w-full text-center text-white hover:bg-white hover:text-blue-600 p-2 px-6 duration-200 rounded-lg cursor-pointer">
+              <a className="nav-link" href="#">TODAY</a>
+            </li>
+            <li className="lg:hidden nav-item w-full text-center text-white hover:bg-white hover:text-blue-600 p-2 px-6 duration-200 rounded-lg cursor-pointer">
+              <a className="nav-link" href="#">SIGN IN</a>
             </li>
           </ul>
-          <div className='flex items-center relative lg:hidden'>
-            <a className="nav-link text-white hover:text-blue-600 p-5 w-full text-center duration-200" href="#">SIGN IN</a>
-          </div>
         </div> 
-        <div className='hidden items-center relative lg:flex'>
-          <a className="nav-link text-white hover:text-blue-600 p-5 w-full text-center duration-200" href="#">SIGN IN</a>
+        <div className='hidden lg:flex text-xl text-center'>
+          <a className="nav-link text-white hover:bg-white hover:text-blue-600 p-2 px-6 w-full duration-200 rounded-lg" href="#">SIGN IN</a>
         </div>
       </div>
     </nav>
