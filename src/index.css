@@ -20,3 +20,32 @@ body{
   aspect-ratio: 16 / 9;
   width: 100%;
 }
+.hamburger-menu{
+  display: none;
+}
+.showNav{
+  top: 7.6%;
+}
+@media only screen and (max-width:1024px){
+  .hamburger-menu{
+    display: contents;
+  }
+  .nav{
+    position: fixed;
+    top: 7.6%;
+    left: 0;
+    height: 100vh;
+    width: 100%;
+    transition: 1s;
+    display: flex;
+    transform: translateX(-150vh);
+    padding: 4em;
+  }
+  .navbar-nav{
+    gap: 3em;
+  }
+  .showNav{
+    transform: none;
+    opacity: 0.9;
+  }
+}

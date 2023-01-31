@@ -1,4 +1,4 @@
-import {requests, requestMovieDetail, requestTrailers} from '../Requests'
+import {requestMovieDetail, requestTrailers} from '../Requests'
 import React, {useEffect, useState} from 'react'
 import axios from 'axios'
 import { BrowserRouter as Router, Route, Routes, Link, useParams} from "react-router-dom";
@@ -8,15 +8,22 @@ import { AiFillStar } from 'react-icons/ai';
 const Detail = () => {
     const { id } = useParams();
     const [movie, setMovie] = useState([]);
-    const [genre, setGenres] = useState([])
+    const [genres, setGenres] = useState([])
     const [languages,setLanguages] = useState([]);
     const [trailers, setTrailers] = useState([]);
-    
+    const [image, setImage] = useState(false);
+    const [productions, setProducitons] = useState([]); 
+
     useEffect(()=> {
         axios.get(requestMovieDetail(id)).then((response) => {
             setMovie(response.data);
             setGenres(response.data.genres);
             setLanguages(response.data.spoken_languages);
+            setProducitons(response.data.production_countries);
+            console.log(response.data);
+            if(response.data.backdrop_path != null){
+                setImage(true);
+            }
         })
     },[]);
     useEffect(()=> {
@@ -28,7 +35,7 @@ const Detail = () => {
     return (
         <>
             <div className='absolute -z-50 opacity-30 h-full w-full'>
-                <img className='w-full h-full object-cover bg-center' src={`https://image.tmdb.org/t/p/original/${movie?.backdrop_path}`} alt={movie?.title}/>
+                <img className={`${image ? 'visible':'hidden'} w-full h-full object-cover bg-center`} src={`https://image.tmdb.org/t/p/original/${movie.backdrop_path}`} alt={movie.title}/>
             </div>
             <div className='pt-36 p-5 container mx-auto px-10'>
                 <div className='flex justify-start px-4 mb-8' data-aos="fade-down" data-aos-duration="2000">
@@ -36,27 +43,32 @@ const Detail = () => {
                 </div>
                 <div className='flex lg:flex-row flex-col' data-aos="fade-down" data-aos-duration="1500">
                     <div className='px-4 mb-5 lg:w-2/5'>
-                        <img className="object-cover h-full rounded-3xl shadow-2xl" src={`https://image.tmdb.org/t/p/original/${movie?.poster_path}`} alt={movie?.title}/>
+                        <img className="object-cover h-full rounded-3xl shadow-2xl" src={`https://image.tmdb.org/t/p/w500/${movie.poster_path}`} alt={movie?.title}/>
                     </div>
                     <div className='px-4 lg:w-3/5'>
-                        <h1 className='text-4xl'>{movie?.title}</h1>
+                        <h1 className='text-4xl'>{movie.original_title}</h1>
                         <div className='text-lg'>
-                            <p>Status: {movie?.status}</p>
-                            <p>Release date: {movie?.release_date}</p>
-                            <p>Durations: {movie?.runtime} min</p>
-                            <p className='flex'>IMDB: <AiFillStar className='m-1 text-star-yellow'/> {movie?.vote_average}/10</p>
-                            <p>Original language: {movie?.original_language}</p>
-                            <p>Audio languages: {languages.map((lang,id) => (
-                                <span key={id}>{lang.name} </span>
+                            <p>Title: {movie.title}</p>
+                            <p>Status: {movie.status}</p>
+                            <p>Release date: {movie.release_date}</p>
+                            <p>Durations: {movie.runtime} min</p>
+                            <p className='flex'>IMDB: <AiFillStar className='m-1 text-star-yellow'/> {movie.vote_average}/10</p>
+                            <p>Original language: {movie.original_language}</p>
+                            <p>Audio: {languages.map((lang,id) => (
+                                <span key={id}>{lang.english_name} </span>
                             ))}
                             </p>
-                            <p>Genres: {genre.map((item,id) => (
+                            <p>Genres: {genres.map((item,id) => (
                                 <a key={id} className='text-blue-600 hover:text-blue-400' href="#"> {item.name} </a>
-                            ))}
+                                ))}
+                            </p>
+                            <p>Countries: {productions.map((item, id) => (
+                                <span key={id}> {item.name} </span>
+                                ))}
                             </p>
                         </div>
                         <br></br>
-                        <p className='text-lg'>{movie?.overview}</p>
+                        <p className='text-lg'>{movie.overview}</p>
                         <br></br>
                         <button className='bg-red-600 p-3 px-8 rounded-md hover:bg-red-500 hover:shadow-2xl hover:scale-110 duration-200 mr-4'>Tickets</button>
                     </div>
@@ -67,8 +79,8 @@ const Detail = () => {
                     {trailers.map((item, id) => {
                         if(item.name.includes("Official Trailer") || item.name.includes("Trailer") ){
                             return (
-                                <div data-aos="fade" data-aos-duration="2000">
-                                    <iframe key={id} className='video rounded-3xl' src={`https://www.youtube.com/embed/${item.key}`} title="YouTube video player" frameborder="0" allowFullScreen="true"></iframe>
+                                <div data-aos="fade" data-aos-duration="2000" key={id}>
+                                    <iframe className='video rounded-3xl' src={`https://www.youtube.com/embed/${item.key}`} title="YouTube video player" allowFullScreen="allowFullScreen"></iframe>
                                 </div>
                             )
                         }

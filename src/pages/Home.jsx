@@ -10,7 +10,7 @@ const Home = () => {
             <Section title="Upcoming" FetchURL={requests.requestUpComing}/>
             <Section title="Popular" FetchURL={requests.requestPopular}/>
             <Section title="TopRated" FetchURL={requests.requestTopRated}/>
-            <Section title="TV" FetchURL={requests.requestTvPopular}/>
+            <Section title="Tv" FetchURL={requests.requestTvPopular}/>
         </>
     )
 }
