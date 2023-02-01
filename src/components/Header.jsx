@@ -15,7 +15,7 @@ export default function Main() {
         <div className='w-full h-[700px] text-white'>
             <div className='w-full h-full'>
                 <div className='absolute w-full h-[700px] bg-gradient-to-r from-black'>
-                    <div className='absolute top-[30%] w-full md:w-[50%] p-10' data-aos="fade-left" data-aos-duration="2000">
+                    <div className='absolute top-[30%] w-full md:w-[50%] lg:p-10 p-2' data-aos="fade-left" data-aos-duration="2000">
                         <h1 className='text-4xl'>{randomMovie?.title}</h1>
                         <div className='flex gap-2 mb-2'>
                             <button className='bg-blue-600 p-2 rounded-lg mt-2 hover:bg-blue-500'>Buy Ticket</button>
