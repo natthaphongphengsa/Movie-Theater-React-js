@@ -11,7 +11,7 @@ export default function App() {
     <>
       <Navbar />
       <Routes>
-        <Route path='/' element={<Home />}/>
+        <Route path='/Movie-Theater-React-js' element={<Home />}/>
         <Route path='Film/:id' element={<Film />}/>
         <Route path='Movies' element={<Films />}/>
         <Route path='Tv' element={<Tv />}/>

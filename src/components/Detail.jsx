@@ -1,4 +1,4 @@
-import {requestMovieDetail, requestTrailers} from '../Requests'
+import {requestMovieDetail, requestTrailers} from '../Data/Requests'
 import React, {useEffect, useState} from 'react'
 import axios from 'axios'
 import { BrowserRouter as Router, Route, Routes, Link, useParams} from "react-router-dom";

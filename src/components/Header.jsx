@@ -1,5 +1,5 @@
 import React, {useEffect, useState} from 'react'
-import {requests, requestsVideo} from '../Requests'
+import {requests, requestsVideo} from '../Data/Requests'
 import axios from 'axios'
 
 export default function Main() {

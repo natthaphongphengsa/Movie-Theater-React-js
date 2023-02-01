@@ -1,7 +1,7 @@
 import React from 'react'
 import Header from '../components/Header'
 import Section from '../components/Section'
-import {requests} from '../Requests'
+import {requests} from '../Data/Requests'
 
 const Home = () => {   
     return (

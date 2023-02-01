@@ -1,5 +1,5 @@
 import React, {useEffect, useRef, useState} from 'react'
-import {requests, requestsVideo} from '../Requests'
+import {requests, requestsVideo} from '../Data/Requests'
 import axios from 'axios'
 import {BrowserRouter as Router, Route, Routes, Link,} from "react-router-dom";
 import 'tw-elements'
