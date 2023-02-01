@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.css": "/Movie-Theater-React-js/static/css/main.2c1945ce.css",
+    "main.js": "/Movie-Theater-React-js/static/js/main.ce44c518.js",
+    "index.html": "/Movie-Theater-React-js/index.html",
+    "main.2c1945ce.css.map": "/Movie-Theater-React-js/static/css/main.2c1945ce.css.map",
+    "main.ce44c518.js.map": "/Movie-Theater-React-js/static/js/main.ce44c518.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.2c1945ce.css",
+    "static/js/main.ce44c518.js"
+  ]
+}
