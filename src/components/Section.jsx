@@ -4,10 +4,9 @@ import axios from 'axios'
 import { BiChevronRight } from 'react-icons/bi';
 
 const Section = ({title, FetchURL}) => {
-
     const randomNum = Math.floor(Math.random() * 27);
     const [movies, setMovie] = useState([]);
-    const newUrl = `${FetchURL}&page=${randomNum}`;
+    const newUrl = `${FetchURL}page=${randomNum}`;
 
     useEffect(()=> {
         axios.get(newUrl).then((response) => {
