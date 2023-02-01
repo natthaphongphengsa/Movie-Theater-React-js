@@ -1,13 +1,13 @@
 {
   "files": {
-    "main.css": "/Movie-Theater-React-js/static/css/main.1032dc39.css",
-    "main.js": "/Movie-Theater-React-js/static/js/main.f9451fb0.js",
+    "main.css": "/Movie-Theater-React-js/static/css/main.8f3d484d.css",
+    "main.js": "/Movie-Theater-React-js/static/js/main.4bfeabe9.js",
     "index.html": "/Movie-Theater-React-js/index.html",
-    "main.1032dc39.css.map": "/Movie-Theater-React-js/static/css/main.1032dc39.css.map",
-    "main.f9451fb0.js.map": "/Movie-Theater-React-js/static/js/main.f9451fb0.js.map"
+    "main.8f3d484d.css.map": "/Movie-Theater-React-js/static/css/main.8f3d484d.css.map",
+    "main.4bfeabe9.js.map": "/Movie-Theater-React-js/static/js/main.4bfeabe9.js.map"
   },
   "entrypoints": [
-    "static/css/main.1032dc39.css",
-    "static/js/main.f9451fb0.js"
+    "static/css/main.8f3d484d.css",
+    "static/js/main.4bfeabe9.js"
   ]
 }
