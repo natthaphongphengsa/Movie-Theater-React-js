@@ -17,7 +17,7 @@ const Section = ({title, FetchURL}) => {
     if(title === "Tv"){
         return (
             <div className='p-10'>
-                <Link to={`Movie`} className='font-bold md:text-3xl flex link-light w-min hover:link-primary duration-200' data-aos="fade-up" data-aos-duration="2000">{title}<BiChevronRight className='mt-1'/></Link>
+                <Link to={`Movie`} className='font-bold text-3xl md:text-3xl flex link-light w-fit hover:link-primary duration-200' data-aos="fade-up" data-aos-duration="2000">{title}<BiChevronRight className='mt-1'/></Link>
                 <div id={'slider'} className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 xl:grid-cols-8 gap-10 mt-5 flex-col" data-aos="fade-up" data-aos-duration="2000">
                     {movies.map((item, id) => (
                         <div key={id} className='relative rounded-xl lg:hover:scale-125 md:hover:scale-125 duration-200' id="movieRow" >
@@ -37,7 +37,7 @@ const Section = ({title, FetchURL}) => {
     }else{
         return (
             <div className='p-10'>
-                <Link to={`Movie`} className='font-bold md:text-3xl flex link-light w-min hover:link-primary duration-200' data-aos="fade-up" data-aos-duration="2000">{title}<BiChevronRight className='mt-1'/></Link>
+                <Link to={`Movie`} className='font-bold text-3xl md:text-3xl flex link-light w-fit hover:link-primary duration-200' data-aos="fade-up" data-aos-duration="2000">{title}<BiChevronRight className='mt-1'/></Link>
                 <div id={'slider'} className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 xl:grid-cols-8 gap-10 mt-5 flex-col" data-aos="fade-up" data-aos-duration="2000">
                     {movies.map((item, id) => (
                         <div key={id} className='relative rounded-xl lg:hover:scale-125 md:hover:scale-125 duration-200' id="movieRow">
