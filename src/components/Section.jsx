@@ -29,7 +29,7 @@ const Section = ({title, FetchURL}) => {
                                     IMDB: {item.vote_average}<br></br>
                                 </p>
                             </Link>
-                        </div>                                        
+                        </div>                                     
                     ))}
                 </div>
             </div>

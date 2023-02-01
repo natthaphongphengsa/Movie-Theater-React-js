@@ -3,7 +3,13 @@ import React, {useEffect, useState} from 'react'
 import axios from 'axios'
 import { BrowserRouter as Router, Route, Routes, Link, useParams} from "react-router-dom";
 import { BsArrow90DegLeft } from 'react-icons/bs';
-import { AiFillStar } from 'react-icons/ai';
+import { AiFillStar, AiFillAudio } from 'react-icons/ai';
+import { BiTimeFive, BiCategory, BiWorld } from 'react-icons/bi';
+import { BsCalendarDateFill, BsFilm } from 'react-icons/bs';
+import { MdLanguage } from 'react-icons/md';
+import { TfiText } from 'react-icons/tfi';
+import { FaTicketAlt } from 'react-icons/fa';
+
 
 const Detail = () => {
     const { id } = useParams();
@@ -39,7 +45,7 @@ const Detail = () => {
             </div>
             <div className='pt-36 p-5 container mx-auto px-10'>
                 <div className='flex justify-start px-4 mb-8' data-aos="fade-down" data-aos-duration="2000">
-                    <Link to="/" className='text-white bg-transparent rounded-md hover:text-blue-500 flex duration-200'><BsArrow90DegLeft className=' w-8 h-8 mr-3'/>Back</Link>
+                    <Link to="/Movie-Theater-React-js" className='text-white bg-transparent rounded-md hover:text-blue-500 flex duration-200'><BsArrow90DegLeft className=' w-8 h-8 mr-3'/>Back</Link>
                 </div>
                 <div className='flex lg:flex-row flex-col' data-aos="fade-down" data-aos-duration="1500">
                     <div className='px-4 mb-5 lg:w-2/5'>
@@ -48,29 +54,29 @@ const Detail = () => {
                     <div className='px-4 lg:w-3/5'>
                         <h1 className='text-4xl'>{movie.original_title}</h1>
                         <div className='text-lg'>
-                            <p>Title: {movie.title}</p>
-                            <p>Status: {movie.status}</p>
-                            <p>Release date: {movie.release_date}</p>
-                            <p>Durations: {movie.runtime} min</p>
-                            <p className='flex'>IMDB: <AiFillStar className='m-1 text-star-yellow'/> {movie.vote_average}/10</p>
-                            <p>Original language: {movie.original_language}</p>
-                            <p>Audio: {languages.map((lang,id) => (
-                                <span key={id}>{lang.english_name} </span>
+                            <p className='flex mt-1'><TfiText className='mt-1 mr-3 text-blue-600 w-6 h-6'/>Title: {movie.title}</p>
+                            <p className='flex mt-1'><BsFilm className='mt-1 mr-3 text-red-600 w-6 h-6'/>Status: {movie.status}</p>
+                            <p className='flex mt-1'><BsCalendarDateFill className='mt-1 mr-3 text-green-600 w-6 h-6'/>Released: {movie.release_date}</p>
+                            <p className='flex mt-1'><BiTimeFive className='mt-1 mr-3 text-blue-600 w-6 h-6'/>Durations: {movie.runtime} min</p>
+                            <p className='flex mt-1'><AiFillStar className='mt-1 mr-3 text-star-yellow w-6 h-6'/>Stars: {movie.vote_average}/10 IMDB</p>
+                            <p className='flex mt-1'><MdLanguage className='mt-1 mr-3 text-blue-600 w-6 h-6'/>Language: {movie.original_language}</p>
+                            <p className='flex mt-1'><AiFillAudio className='mt-1 mr-3 text-white w-6 h-6'/>Audio {languages.map((lang,id) => (
+                                <span key={id}>: {lang.english_name}</span>
                             ))}
                             </p>
-                            <p>Genres: {genres.map((item,id) => (
-                                <a key={id} className='text-blue-600 hover:text-blue-400' href="#"> {item.name} </a>
+                            <p className='flex mt-1'><BiCategory className='mt-1 mr-3 text-orange-600 w-6 h-6'/>Genre:{genres.map((item,id) => (
+                                <a key={id} className='text-blue-600 hover:text-blue-400' href="#">{item.name}</a>
                                 ))}
                             </p>
-                            <p>Countries: {productions.map((item, id) => (
-                                <span key={id}> {item.name} </span>
+                            <p className='flex mt-1'><BiWorld className='mt-1 mr-3 text-blue-600 w-6 h-6'/>Contries {productions.map((item, id) => (
+                                <span key={id}>: {item.name} </span>
                                 ))}
                             </p>
                         </div>
                         <br></br>
                         <p className='text-lg'>{movie.overview}</p>
                         <br></br>
-                        <button className='bg-red-600 p-3 px-8 rounded-md hover:bg-red-500 hover:shadow-2xl hover:scale-110 duration-200 mr-4'>Tickets</button>
+                        <button className='bg-red-600 p-3 px-8 rounded-md hover:bg-red-500 hover:shadow-2xl hover:scale-110 duration-200 mr-4 flex'><FaTicketAlt className='w-6 h-6 mr-2'/>Tickets</button>
                     </div>
                 </div>
                 <br></br>

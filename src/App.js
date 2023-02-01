@@ -11,10 +11,10 @@ export default function App() {
     <>
       <Navbar />
       <Routes>
-        <Route path='/' element={<Home />}/>
-        <Route path='Film/:id' element={<Film />}/>
-        <Route path='Movies' element={<Films />}/>
-        <Route path='Tv' element={<Tv />}/>
+        <Route path='/Movie-Theater-React-js' element={<Home />}/>
+        <Route path='/Movie-Theater-React-js/Film/:id' element={<Film />}/>
+        <Route path='/Movie-Theater-React-js/Movies' element={<Films />}/>
+        <Route path='/Movie-Theater-React-js/Tv' element={<Tv />}/>
       </Routes>
     </>
   );
