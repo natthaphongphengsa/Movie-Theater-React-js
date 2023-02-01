@@ -43,33 +43,33 @@ const Detail = () => {
             <div className='absolute -z-50 opacity-30 h-full w-full'>
                 <img className={`${image ? 'visible':'hidden'} w-full h-full object-cover bg-center`} src={`https://image.tmdb.org/t/p/original/${movie.backdrop_path}`} alt={movie.title}/>
             </div>
-            <div className='pt-36 p-5 container mx-auto px-10'>
+            <div className='pt-36 container mx-auto'>
                 <div className='flex justify-start px-4 mb-8' data-aos="fade-down" data-aos-duration="2000">
                     <Link to="/Movie-Theater-React-js" className='text-white bg-transparent rounded-md hover:text-blue-500 flex duration-200'><BsArrow90DegLeft className=' w-8 h-8 mr-3'/>Back</Link>
                 </div>
                 <div className='flex lg:flex-row flex-col' data-aos="fade-down" data-aos-duration="1500">
-                    <div className='px-4 mb-5 lg:w-2/5'>
-                        <img className="object-cover h-full rounded-3xl shadow-2xl" src={`https://image.tmdb.org/t/p/w500/${movie.poster_path}`} alt={movie?.title}/>
+                    <div className='px-4 mb-5 m-auto'>
+                        <img className="object-fill h-full w-full rounded-3xl shadow-2xl" src={`https://image.tmdb.org/t/p/w500/${movie.poster_path}`} alt={movie?.title}/>
                     </div>
                     <div className='px-4 lg:w-3/5'>
-                        <h1 className='text-4xl'>{movie.original_title}</h1>
+                        <h1 className='text-4xl truncate'>{movie.original_title}</h1>
                         <div className='text-lg'>
-                            <p className='flex mt-1'><TfiText className='mt-1 mr-3 text-blue-600 w-6 h-6'/>Title: {movie.title}</p>
-                            <p className='flex mt-1'><BsFilm className='mt-1 mr-3 text-red-600 w-6 h-6'/>Status: {movie.status}</p>
-                            <p className='flex mt-1'><BsCalendarDateFill className='mt-1 mr-3 text-green-600 w-6 h-6'/>Released: {movie.release_date}</p>
-                            <p className='flex mt-1'><BiTimeFive className='mt-1 mr-3 text-blue-600 w-6 h-6'/>Durations: {movie.runtime} min</p>
-                            <p className='flex mt-1'><AiFillStar className='mt-1 mr-3 text-star-yellow w-6 h-6'/>Stars: {movie.vote_average}/10 IMDB</p>
-                            <p className='flex mt-1'><MdLanguage className='mt-1 mr-3 text-blue-600 w-6 h-6'/>Language: {movie.original_language}</p>
-                            <p className='flex mt-1'><AiFillAudio className='mt-1 mr-3 text-white w-6 h-6'/>Audio {languages.map((lang,id) => (
+                            <p className='flex mt-1 truncate'><TfiText className='mt-1 mr-3 text-blue-600 w-6 h-6'/>Title: {movie.title}</p>
+                            <p className='flex mt-1 truncate'><BsFilm className='mt-1 mr-3 text-red-600 w-6 h-6'/>Status: {movie.status}</p>
+                            <p className='flex mt-1 truncate'><BsCalendarDateFill className='mt-1 mr-3 text-green-600 w-6 h-6'/>Released: {movie.release_date}</p>
+                            <p className='flex mt-1 truncate'><BiTimeFive className='mt-1 mr-3 text-blue-600 w-6 h-6'/>Durations: {movie.runtime} min</p>
+                            <p className='flex mt-1 truncate'><AiFillStar className='mt-1 mr-3 text-star-yellow w-6 h-6'/>Stars: {movie.vote_average}/10 IMDB</p>
+                            <p className='flex mt-1 truncate'><MdLanguage className='mt-1 mr-3 text-blue-600 w-6 h-6'/>Language: {movie.original_language}</p>
+                            <p className='flex mt-1 truncate'><AiFillAudio className='mt-1 mr-3 text-white w-6 h-6'/>Audio {languages.map((lang,id) => (
                                 <span key={id}>: {lang.english_name}</span>
                             ))}
                             </p>
                             <p className='flex mt-1'><BiCategory className='mt-1 mr-3 text-orange-600 w-6 h-6'/>Genre:{genres.map((item,id) => (
-                                <a key={id} className='text-blue-600 hover:text-blue-400' href="#">{item.name}</a>
+                                <a key={id} className='text-blue-600 hover:text-blue-400 truncate' href="#">,{item.name}</a>
                                 ))}
                             </p>
                             <p className='flex mt-1'><BiWorld className='mt-1 mr-3 text-blue-600 w-6 h-6'/>Contries {productions.map((item, id) => (
-                                <span key={id}>: {item.name} </span>
+                                <span key={id} className="truncate">: {item.name} </span>
                                 ))}
                             </p>
                         </div>
