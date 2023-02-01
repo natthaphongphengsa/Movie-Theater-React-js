@@ -9,7 +9,7 @@ const Home = () => {
             <Header/>
             <Section title="Upcoming" FetchURL={requests.requestUpComing}/>
             <Section title="Popular" FetchURL={requests.requestPopular}/>
-            <Section title="TopRated" FetchURL={requests.requestTopRated}/>
+            <Section title="Top Rated" FetchURL={requests.requestTopRated}/>
             <Section title="Tv" FetchURL={requests.requestTvPopular}/>
         </>
     )
