@@ -24,13 +24,18 @@ const Navbar = () => {
   window.addEventListener("scroll", changeBackgroundColor);
 
   return (
-    <nav className={`${navBackground ? 'bg-[#001426f2]':'bg-transparent'} w-full flex flex-wrap items-center justify-between py-3 navbar navbar-expand-lg navbar-light z-50 fixed top-0`}>
-      <div className="w-full flex flex-wrap items-center justify-between px-6">
-        <Link to="/Movie-Theater-React-js" className="text-xl pr-2 hover:text-blue-500 text-blue-600 font-bold cursor-pointer">24MOVIES</Link>
-        <button className='hamburger-menu' type="button" onClick={showNavbar}>
+    <nav className={`${navBackground ? 'bg-[#001426f2]':'bg-transparent'} w-full flex flex-wrap items-center justify-between py-3 navbar navbar-expand-lg navbar-light z-50 fixed top-0 px-6 duration-200`}>
+      <div className="w-full flex flex-wrap items-center justify-between">
+        <button onClick={() => window.location.reload(false)} className="text-xl pr-2 hover:text-blue-500 text-blue-600 font-bold cursor-pointer">24MOVIES</button>
+        <button className='hamburger-menu w-full' type="button" onClick={showNavbar}>
           <Hamburger toggled={isOpen} toggle={setOpen} />
         </button>
-        <div ref={navRef} className="nav items-center bg-black lg:bg-transparent text-xl">
+        <div ref={navRef} className={`nav bg-black lg:bg-transparent text-xl overflow-y-auto`}>
+          <div className='flex justify-end px-3'>
+            <button className='hamburger-menu w-full' type="button" onClick={showNavbar}>
+                <Hamburger toggled={isOpen} toggle={setOpen} />
+            </button>
+          </div>
           <ul className="navbar-nav flex flex-col pl-0 list-style-none mr-auto items-center w-full h-full justify-center">
             <li className="nav-item w-fit text-center text-white hover:bg-white hover:text-blue-600 p-2 px-6 duration-200 rounded-lg cursor-pointer">
               <Link to="/Movie-Theater-React-js/Movies" className="nav-link">MOVIES</Link>

@@ -9,6 +9,7 @@ body{
   background: rgb(0,0,4);
   background: linear-gradient(90deg, rgba(0,0,4,1) 0%, rgba(0,3,31,1) 50%, rgba(0,0,4,1) 100%);
   font-family: 'Kanit', sans-serif;
+  scroll-behavior: smooth;
 }
 #movieRow{
   box-shadow: rgb(13 36 102 / 60%) 6px 6px 34px 3px;
@@ -26,26 +27,36 @@ body{
 .showNav{
   top: 7.6%;
 }
-@media only screen and (max-width:1024px){
+@media screen and (max-width:1024px){
   .hamburger-menu{
     display: contents;
   }
   .nav{
     position: fixed;
-    top: 7.6%;
+    z-index: 999999;
+    top: 0;
+    bottom: 0;
     left: 0;
     height: 100vh;
     width: 100%;
-    transition: 250ms;
-    display: flex;
-    transform: translateX(-150vh);
-    padding: 4em;
+    display: none;
+    padding: 12px;
   }
   .navbar-nav{
     gap: 3em;
   }
   .showNav{
     transform: none;
-    opacity: 0.9;
+    display: block;
+    opacity: 0.95;
   }
+}
+.modal{
+  backdrop-filter: blur(5px);
+}
+.modal-dialog, .modal-content{
+  max-width: 100%;
+  height: 100%; 
+  background-color: transparent;
+  margin: 0;
 }
