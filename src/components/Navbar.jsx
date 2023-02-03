@@ -26,7 +26,9 @@ const Navbar = () => {
   return (
     <nav className={`${navBackground ? 'bg-[#001426f2]':'bg-transparent'} w-full flex flex-wrap items-center justify-between py-3 navbar navbar-expand-lg navbar-light z-50 fixed top-0 px-6 duration-200`}>
       <div className="w-full flex flex-wrap items-center justify-between">
-        <button onClick={() => window.location.reload(false)} className="text-xl pr-2 hover:text-blue-500 text-blue-600 font-bold cursor-pointer">24MOVIES</button>
+        <div className='flex'>
+          <Link to="/Movie-Theater-React-js" className="text-xl pr-2 hover:text-blue-500 text-blue-600 font-bold cursor-pointer mr-4">24MOVIES</Link>
+        </div>
         <button className='hamburger-menu w-full' type="button" onClick={showNavbar}>
           <Hamburger toggled={isOpen} toggle={setOpen} />
         </button>
@@ -49,7 +51,7 @@ const Navbar = () => {
             <li className="lg:hidden nav-item w-fit text-center text-white hover:bg-white hover:text-blue-600 p-2 px-6 duration-200 rounded-lg cursor-pointer">
               <a className="nav-link" href="#">SIGN IN</a>
             </li>
-          </ul>
+          </ul>          
         </div> 
         <div className='hidden lg:flex text-xl text-center'>
           <a className="nav-link text-white hover:bg-white hover:text-blue-600 p-2 px-6 w-full duration-200 rounded-lg" href="#">SIGN IN</a>
