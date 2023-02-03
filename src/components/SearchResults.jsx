@@ -13,7 +13,7 @@ const SearchResults = () => {
   const [currentPage, setCurrenPage] = useState(1);
 
  useEffect(() => {   
-    FetchResults(query,currentPage);
+    FetchResults(query, currentPage);
   },[])
 
   const handlePageClick = (event) => {
@@ -28,8 +28,7 @@ const SearchResults = () => {
       setPageCount(data.total_pages);
       setCurrenPage(data.page);              
     });
-
-  }
+  };
 
   return (
     <>
