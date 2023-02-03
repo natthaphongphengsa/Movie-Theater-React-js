@@ -11,9 +11,8 @@ import { FaTicketAlt } from 'react-icons/fa';
 import Carousel from 'react-multi-carousel';
 import WithStyles from 'react-multi-carousel/lib/styles.css';
 
-
 const Detail = () => {
-    const { id } = useParams();
+    const {movie_id} = useParams();
     const [movie, setMovie] = useState([]);
     const [genres, setGenres] = useState([])
     const [languages,setLanguages] = useState([]);
@@ -21,41 +20,59 @@ const Detail = () => {
     const [image, setImage] = useState(false);
     const [productions, setProducitons] = useState([]); 
     const [casts, setCasts] = useState([]);
-    const [castProfile, setCastProfile] = useState(false);
     const [similarMovies, setSimilarMovies] = useState([]);
-    
+    const [castAvailable, setCastAvailable] = useState(false);
+    const [similarAvailable, setsimilarAvailable] = useState(false);
 
     useEffect(()=> {
-        axios.get(requestMovieDetail(id)).then((response) => {
+        FetchData(movie_id);
+    },[]);
+
+    function FetchData(movie_id){
+        window.scrollTo({
+            top: 0,
+            behavior: 'smooth'
+        });
+        axios.get(requestMovieDetail(movie_id)).then((response) => {
             setMovie(response.data);
             setGenres(response.data.genres);
             setLanguages(response.data.spoken_languages);
             setProducitons(response.data.production_countries);
-            console.log(response.data);
             if(response.data.backdrop_path != null){
                 setImage(true);
             }
-        })
-    },[]);
-    useEffect(()=> {
-        axios.get(requestTrailers(id)).then((response) => {
+        });
+        axios.get(requestTrailers(movie_id)).then((response) => {
             setTrailers(response.data.results)
-        })
-    },[]);
-    useEffect(() => {
-        axios.get(requestCast(id)).then((response) => {
-            setCasts(response.data.cast);
-            
-        })
-    },[]);
-    useEffect(() => {
-        const fetchUrl = requestSimilar(id, Math.floor(Math.random() * 20));
-        axios.get(fetchUrl).then((response) => {
-            setSimilarMovies(response.data.results);
-            console.log(response.data.results);
-        })
-    },[]);
+        });
+        axios.get(requestCast(movie_id)).then((response) => {
+            const count = response.data.cast;
+            if(count?.length > 0){
+                setCastAvailable(true);
+                setCasts(response.data.cast);
+            }   
+            else{
+                setCastAvailable(false);      
+            }           
+        });
+        const fetchUrl = requestSimilar(movie_id, Math.floor(Math.random() * 20));
+        axios.get(fetchUrl).then((response) => {            
+            const count = response.data.results;
+            if(count?.length > 0){
+                setsimilarAvailable(true);
+                setSimilarMovies(response.data.results);
+            }
+            else{
+                setsimilarAvailable(false);
+            }
+        });
+    }
 
+    function scrollTo(){
+        const section = document.querySelector('#goToVideo');
+        section.scrollIntoView( { behavior: 'smooth', block: 'start' } );
+    }
+    
     const responsive = {
         superLargeDesktop: {
           // the naming can be any, depends on you.
@@ -75,8 +92,8 @@ const Detail = () => {
         },
         mobile: {
           breakpoint: { max: 464, min: 0 },
-          items: 4,
-          slidesToSlide:4
+          items: 2,
+          slidesToSlide:2
         }
       };
 
@@ -99,8 +116,8 @@ const Detail = () => {
                             <p className='flex mt-1 truncate'><BiTimeFive className='mt-1 mr-3 text-blue-600 w-6 h-6'/>Durations: {movie?.runtime} min</p>
                             <p className='flex mt-1 truncate'><AiFillStar className='mt-1 mr-3 text-star-yellow w-6 h-6'/>Stars: {movie?.vote_average}/10 IMDB</p>
                             <p className='flex mt-1 truncate'><MdLanguage className='mt-1 mr-3 text-blue-600 w-6 h-6'/>Language: {movie?.original_language}</p>
-                            <p className='flex mt-1 truncate'><AiFillAudio className='mt-1 mr-3 text-white w-6 h-6'/>Audio {languages?.map((lang,id) => (
-                                <span key={id}>: {lang.english_name}</span>
+                            <p className='flex mt-1 truncate'><AiFillAudio className='mt-1 mr-3 text-white w-6 h-6'/>Audio: {languages?.map((lang,id) => (
+                                <span key={id}>, {lang.english_name}</span>
                             ))}
                             </p>
                             <p className='flex mt-1'><BiCategory className='mt-1 mr-3 text-orange-600 w-6 h-6'/>Genre:{genres?.map((item,id) => (
@@ -108,7 +125,7 @@ const Detail = () => {
                                 ))}
                             </p>
                             <p className='flex mt-1'><BiWorld className='mt-1 mr-3 text-blue-600 w-6 h-6'/>Contries {productions?.map((item, id) => (
-                                <span key={id} className="truncate">: {item.name} </span>
+                                <span key={id} className="truncate">, {item.name} </span>
                                 ))}
                             </p>
                         </div>
@@ -120,17 +137,17 @@ const Detail = () => {
                                 <FaTicketAlt className='w-6 h-6 mr-2'/>
                                 Tickets
                             </button>
-                            <a href='#goToVideo' className='bg-red-600 p-3 px-8 rounded-md hover:bg-red-500 hover:shadow-2xl hover:scale-110 duration-200 mr-4 flex justify-center'>
+                            <button onClick={scrollTo} className='bg-red-600 p-3 px-8 rounded-md hover:bg-red-500 hover:shadow-2xl hover:scale-110 duration-200 mr-4 flex justify-center'>
                                 <TfiVideoClapper className='w-6 h-6 mr-2'/>
                                 Trailer
-                            </a>
+                            </button>
                         </div>                        
                     </div>
                 </div>
                 <br></br>
-                <div className='max-w-full mt-8'>
-                    <Link to={`Movie`} className='px-4 font-bold text-3xl md:text-3xl flex link-light w-fit hover:link-primary duration-200 mb-3'>Casts<BiChevronRight className='mt-1'/></Link>
-                    <Carousel removeArrowOnDeviceType={["tablet", "mobile"]} responsive={responsive} className="lg:rounded-3xl" keyBoardControl={true} swipeable={true} draggable={true} infinite={true} ssr={true}>
+                <div className={`${castAvailable ? "visible": "hidden"} max-w-full mt-8`} data-aos="fade" data-aos-duration="1500">
+                    <Link to={`Movie`} className='px-4 font-bold text-3xl md:text-3xl flex link-light w-fit hover:link-primary duration-200 mb-3'>Cast<BiChevronRight className='mt-1'/></Link>
+                    <Carousel removeArrowOnDeviceType={["tablet", "mobile"]} responsive={responsive} className="lg:rounded-3xl md:rounded-3xl" keyBoardControl={true} swipeable={true} infinite="true">
                         {casts?.map((cast, id) => {                            
                             if(cast?.profile_path != null){
                                 return ( 
@@ -151,7 +168,7 @@ const Detail = () => {
                             }
                             return(
                                 <div className="w-full h-full duration-200 bg-white"> 
-                                        <button key={id} className="h-full relative">
+                                        <button key={id} className="h-full w-full relative">
                                             <MdOutlineHideImage className='text-red-600 w-full h-full'/> 
                                             <div className='grid grid-cols-0 gap-0 place-items-center absolute top-0 left-0 bottom-0 duration-300 text-center w-full h-full opacity-0 hover:opacity-100 hover:backdrop-blur-xl'>
                                                 <p className='truncate w-full h-fit text-sm sm:text-sm lg:text-xl md:text-xl text-slate-600'>
@@ -179,23 +196,23 @@ const Detail = () => {
                         }
                     })}
                 </div>
-                <div className='max-w-full mt-8'>
+                <div className={`${similarAvailable ? "visible": "hidden"} max-w-full mt-8`} data-aos="fade" data-aos-duration="1500">
                     <Link to={`Movie`} className='px-4 font-bold text-3xl md:text-3xl flex link-light w-fit hover:link-primary duration-200 mb-3'>Similar<BiChevronRight className='mt-1'/></Link>
-                    <Carousel removeArrowOnDeviceType={["tablet", "mobile"]} responsive={responsive} className="lg:rounded-3xl" keyBoardControl={true} swipeable={true} draggable={true} infinite={true} ssr={true}>
+                    <Carousel removeArrowOnDeviceType={["tablet", "mobile"]} responsive={responsive} className="lg:rounded-3xl md:rounded-3xl" keyBoardControl={true} swipeable={true} infinite="true">
                         {similarMovies?.map((similar, id) => {
                             if(similar?.poster_path != null){
                                 return (
                                     <div className="w-full h-full duration-200 p-2 lg:rounded-3xl">                                
-                                        <a href={`${similar?.id}`} key={id} className="h-full w-full relative">
-                                            <img src={`https://image.tmdb.org/t/p/original${similar?.poster_path}`} className="h-full w-full lg:rounded-3xl"/>
-                                        </a>
+                                        <button onClick={() => FetchData(similar?.id)} key={id} className="h-full w-full relative">
+                                            <img src={`https://image.tmdb.org/t/p/w500${similar?.poster_path}`} className="h-full w-full lg:rounded-3xl"/>
+                                        </button>
                                     </div>
                                 )
                             }
                             return (
                                 <div className="w-full h-full duration-200 p-2 lg:rounded-3xl">  
                                     <div className='bg-white w-full h-full lg:rounded-3xl'>
-                                        <Link to={`Film/${similar?.id}`} relative='path' key={id} className="h-full w-full relative">
+                                        <button onClick={() => FetchData(similar?.id)} key={id} className="h-full w-full relative">
                                             <MdOutlineHideImage className='text-red-600 w-full h-full'/> 
                                             <div className='grid grid-cols-0 gap-0 place-items-center absolute top-0 left-0 bottom-0 duration-300 text-center w-full h-full rounded-3xl opacity-0 sm:opacity-100 lg:hover:opacity-100 hover:backdrop-blur-xl'>
                                                     <p className='truncate w-full h-fit text-sm sm:text-sm lg:text-xl md:text-xl text-slate-600'>
@@ -203,7 +220,7 @@ const Detail = () => {
                                                         IMDB: {similar?.vote_average}
                                                     </p>
                                             </div>
-                                        </Link>
+                                        </button >
                                     </div>                              
                                 </div>
                             )

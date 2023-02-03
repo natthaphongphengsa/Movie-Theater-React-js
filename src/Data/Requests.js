@@ -20,5 +20,8 @@ const requestCast = (movie_id) => {
 const requestSimilar = (movie_id, page_num) => {
     return `https://api.themoviedb.org/3/movie/${movie_id}/similar?api_key=${apiKey}&page=${page_num}`
 }
+const requestSearchMovie = (query, page_num) => {
+    return `https://api.themoviedb.org/3/search/movie?api_key=be76a96804dad9c25a604d69639cf845&query=${query}&page=${page_num}`
+}
 
-export {requests, requestMovieDetail, requestTrailers, requestCast, requestSimilar}
+export {requests, requestMovieDetail, requestTrailers, requestCast, requestSimilar, requestSearchMovie}

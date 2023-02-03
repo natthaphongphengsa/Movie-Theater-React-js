@@ -5,7 +5,7 @@ import { BiChevronRight } from 'react-icons/bi';
 
 const Section = ({title, FetchURL}) => {
     const [movies, setMovie] = useState([]);
-    const newUrl = `${FetchURL}${Math.floor(Math.random() * 25)}`;
+    const newUrl = `${FetchURL}${Math.floor(Math.random() * 27)}`;
 
     useEffect(()=> {
         axios.get(newUrl).then((response) => {
@@ -21,7 +21,7 @@ const Section = ({title, FetchURL}) => {
                     {movies.map((item, id) => (
                         <div key={id} className='relative rounded-xl lg:hover:scale-110 duration-200' id="movieRow" >
                             <img className='w-full h-full rounded-xl' src={`https://image.tmdb.org/t/p/w500/${item?.poster_path}`} alt={`${item?.name}`}></img>
-                            <Link to={`Film/${item?.id}`} className='absolute w-full h-full top-0 grid duration-200 cursor-pointer bg-black/70 rounded-xl opacity-0 lg:hover:opacity-100'>
+                            <Link to={`Film/${item?.id}`} id={item?.id}  className='absolute w-full h-full top-0 grid duration-200 cursor-pointer bg-black/70 rounded-xl opacity-0 lg:hover:opacity-100'>
                                 <p className='self-center text-center text-sm'>
                                     {item.name}<br></br>
                                     Released: {item.first_air_date}<br></br>
@@ -41,7 +41,7 @@ const Section = ({title, FetchURL}) => {
                     {movies.map((item, id) => (
                         <div key={id} className='relative rounded-xl lg:hover:scale-110 duration-200' id="movieRow">
                             <img className='w-full h-full rounded-xl' src={`https://image.tmdb.org/t/p/w500/${item?.poster_path}`} alt={`${item?.title}`}></img>
-                            <Link to={`Film/${item?.id}`} className='absolute w-full h-full top-0 grid duration-200 cursor-pointer bg-black/70 rounded-xl opacity-0 lg:hover:opacity-100'>
+                            <Link to={`Film/${item?.id}`} id={item?.id} className='absolute w-full h-full top-0 grid duration-200 cursor-pointer bg-black/70 rounded-xl opacity-0 lg:hover:opacity-100'>
                                 <p className='self-center text-center text-sm'>
                                     {item?.title}<br></br>
                                     Released: {item?.release_date}<br></br>

@@ -1,8 +1,7 @@
 import React from 'react'
 import Detail from '../components/Detail'
 
-const Film = () =>{
-    
+const Film = () =>{    
     return (
         <Detail/>
     )
