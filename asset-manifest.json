@@ -1,13 +1,16 @@
 {
   "files": {
-    "main.css": "/Movie-Theater-React-js/static/css/main.d7d1d1ec.css",
-    "main.js": "/Movie-Theater-React-js/static/js/main.8a59bc45.js",
+    "main.css": "/Movie-Theater-React-js/static/css/main.ce2f6066.css",
+    "main.js": "/Movie-Theater-React-js/static/js/main.030ab907.js",
+    "static/media/revicons.eot": "/Movie-Theater-React-js/static/media/revicons.a77de540a38981833f9e.eot",
+    "static/media/revicons.ttf": "/Movie-Theater-React-js/static/media/revicons.57fd05d4ae650374c8de.ttf",
+    "static/media/revicons.woff": "/Movie-Theater-React-js/static/media/revicons.e8746a624ed098489406.woff",
     "index.html": "/Movie-Theater-React-js/index.html",
-    "main.d7d1d1ec.css.map": "/Movie-Theater-React-js/static/css/main.d7d1d1ec.css.map",
-    "main.8a59bc45.js.map": "/Movie-Theater-React-js/static/js/main.8a59bc45.js.map"
+    "main.ce2f6066.css.map": "/Movie-Theater-React-js/static/css/main.ce2f6066.css.map",
+    "main.030ab907.js.map": "/Movie-Theater-React-js/static/js/main.030ab907.js.map"
   },
   "entrypoints": [
-    "static/css/main.d7d1d1ec.css",
-    "static/js/main.8a59bc45.js"
+    "static/css/main.ce2f6066.css",
+    "static/js/main.030ab907.js"
   ]
 }
