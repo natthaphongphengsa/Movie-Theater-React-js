@@ -130,7 +130,7 @@ const Detail = () => {
                 <br></br>
                 <div className='max-w-full mt-8'>
                     <Link to={`Movie`} className='px-4 font-bold text-3xl md:text-3xl flex link-light w-fit hover:link-primary duration-200 mb-3'>Casts<BiChevronRight className='mt-1'/></Link>
-                    <Carousel removeArrowOnDeviceType={["tablet", "mobile"]} responsive={responsive} className="lg:rounded-3xl" keyBoardControl={true} autoPlaySpeed={2500} autoPlay={true} swipeable={true} draggable={true} infinite={true} ssr={true}>
+                    <Carousel removeArrowOnDeviceType={["tablet", "mobile"]} responsive={responsive} className="lg:rounded-3xl" keyBoardControl={true} swipeable={true} draggable={true} infinite={true} ssr={true}>
                         {casts?.map((cast, id) => {                            
                             if(cast?.profile_path != null){
                                 return ( 
