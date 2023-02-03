@@ -60,19 +60,23 @@ const Detail = () => {
         superLargeDesktop: {
           // the naming can be any, depends on you.
           breakpoint: { max: 4000, min: 3000 },
-          items: 5
+          items: 5,
+          slidesToSlide:5
         },
         desktop: {
           breakpoint: { max: 3000, min: 1024 },
-          items: 6
+          items: 6,
+          slidesToSlide:6
         },
         tablet: {
           breakpoint: { max: 1024, min: 464 },
-          items: 4
+          items: 4,
+          slidesToSlide:4
         },
         mobile: {
           breakpoint: { max: 464, min: 0 },
-          items: 4
+          items: 4,
+          slidesToSlide:4
         }
       };
 
@@ -125,7 +129,7 @@ const Detail = () => {
                 </div>
                 <br></br>
                 <div className='max-w-full mt-8'>
-                    <Link to={`Movie`} className='font-bold text-3xl md:text-3xl flex link-light w-fit hover:link-primary duration-200 mb-3'>Casts<BiChevronRight className='mt-1'/></Link>
+                    <Link to={`Movie`} className='px-4 font-bold text-3xl md:text-3xl flex link-light w-fit hover:link-primary duration-200 mb-3'>Casts<BiChevronRight className='mt-1'/></Link>
                     <Carousel removeArrowOnDeviceType={["tablet", "mobile"]} responsive={responsive} className="lg:rounded-3xl" keyBoardControl={true} autoPlaySpeed={2500} autoPlay={true} swipeable={true} draggable={true} infinite={true} ssr={true}>
                         {casts?.map((cast, id) => {                            
                             if(cast?.profile_path != null){
@@ -176,29 +180,31 @@ const Detail = () => {
                     })}
                 </div>
                 <div className='max-w-full mt-8'>
-                    <Link to={`Movie`} className='font-bold text-3xl md:text-3xl flex link-light w-fit hover:link-primary duration-200 mb-3'>Similar<BiChevronRight className='mt-1'/></Link>
-                    <Carousel removeArrowOnDeviceType={["tablet", "mobile"]} responsive={responsive} className="lg:rounded-3xl" keyBoardControl={true} autoPlaySpeed={2500} autoPlay={true} swipeable={true} draggable={true} infinite={true} ssr={true}>
+                    <Link to={`Movie`} className='px-4 font-bold text-3xl md:text-3xl flex link-light w-fit hover:link-primary duration-200 mb-3'>Similar<BiChevronRight className='mt-1'/></Link>
+                    <Carousel removeArrowOnDeviceType={["tablet", "mobile"]} responsive={responsive} className="lg:rounded-3xl" keyBoardControl={true} swipeable={true} draggable={true} infinite={true} ssr={true}>
                         {similarMovies?.map((similar, id) => {
                             if(similar?.poster_path != null){
                                 return (
                                     <div className="w-full h-full duration-200 p-2 lg:rounded-3xl">                                
-                                        <a href={`${similar?.id}`} key={id} className="h-full relative">
+                                        <a href={`${similar?.id}`} key={id} className="h-full w-full relative">
                                             <img src={`https://image.tmdb.org/t/p/original${similar?.poster_path}`} className="h-full w-full lg:rounded-3xl"/>
                                         </a>
                                     </div>
                                 )
                             }
                             return (
-                                <div className="w-full h-full duration-200 p-2 lg:rounded-3xl bg-white">                                
-                                    <a href={`${similar?.id}`} key={id} className="h-full relative">
-                                        <MdOutlineHideImage className='text-red-600 w-full h-full'/> 
-                                        <div className='grid grid-cols-0 gap-0 place-items-center absolute top-0 left-0 bottom-0 duration-300 text-center w-full h-full opacity-0 hover:opacity-100 hover:backdrop-blur-xl'>
-                                                <p className='truncate w-full h-fit text-sm sm:text-sm lg:text-xl md:text-xl text-slate-600'>
-                                                    {similar?.title}<br></br>
-                                                    IMDB: {similar?.vote_average}
-                                                </p>
-                                        </div>
-                                    </a>
+                                <div className="w-full h-full duration-200 p-2 lg:rounded-3xl">  
+                                    <div className='bg-white w-full h-full lg:rounded-3xl'>
+                                        <Link to={`Film/${similar?.id}`} relative='path' key={id} className="h-full w-full relative">
+                                            <MdOutlineHideImage className='text-red-600 w-full h-full'/> 
+                                            <div className='grid grid-cols-0 gap-0 place-items-center absolute top-0 left-0 bottom-0 duration-300 text-center w-full h-full rounded-3xl opacity-0 sm:opacity-100 lg:hover:opacity-100 hover:backdrop-blur-xl'>
+                                                    <p className='truncate w-full h-fit text-sm sm:text-sm lg:text-xl md:text-xl text-slate-600'>
+                                                        {similar?.title}<br></br>
+                                                        IMDB: {similar?.vote_average}
+                                                    </p>
+                                            </div>
+                                        </Link>
+                                    </div>                              
                                 </div>
                             )
                         })}
