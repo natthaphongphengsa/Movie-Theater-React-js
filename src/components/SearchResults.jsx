@@ -1,21 +1,22 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
-import {BrowserRouter as Router, Route, Routes, Link, useParams} from "react-router-dom";
+import {BrowserRouter as Router, Route, Routes, Link, useSearchParams } from "react-router-dom";
 import { requestSearchMovie } from "../Data/Requests";
 import { BiChevronRight } from 'react-icons/bi';
 import ReactPaginate from 'react-paginate';
 import * as SVGLoaders from 'svg-loaders-react';
 
 const SearchResults = () => {
-  const {query} = useParams();
+  const [searchParams] = useSearchParams();
+  const query = searchParams.get('query');
   const [movies, setMovies] = useState([]);
   const [pageCount, setPageCount] = useState(1);
   const [currentPage, setCurrenPage] = useState(1);
   const [isLoading, setLoading] = useState(true);
 
- useEffect(() => {   
+ useEffect(() => {       
     FetchResults(query, currentPage);
-  },[])
+  },[searchParams])
 
   const handlePageClick = (event) => {
     FetchResults(query, event.selected+1);  
@@ -33,11 +34,10 @@ const SearchResults = () => {
 
   if(isLoading == true){
     return (
-    <div className='w-full h-full p-52 fixed bg-transparent z-50 flex'>
-    <h1 className='left-[50%] top-[70%] relative translate-x-[-50%]'>Loading....</h1>
-    <SVGLoaders.Puff stroke="#ffffff" width="140" height="140" className="left-[50%] top-[50%] fixed translate-x-[-50%] translate-y-[-50%]"/>
-     </div>
-    )
+      <div className='w-full h-full p-52 fixed bg-[#001d66] z-50 flex overflow-hidden'>
+          <h1 className='left-[50%] top-[70%] relative translate-x-[-50%]'>Loading....</h1>
+          <SVGLoaders.Puff stroke="#ffffff" width="140" height="140" className="left-[50%] top-[50%] fixed translate-x-[-50%] translate-y-[-50%]"/>
+      </div>)
   }else{
     if(movies?.length != 0){
       return (

@@ -31,7 +31,13 @@ const Navbar = () => {
         top: 0,
         behavior: 'smooth'
       });
-}
+  }
+
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    navigate({pathname: '/Movie-Theater-React-js/Search',search: `?query=${query}`,}, { replace: true });
+    // navigate(`/Movie-Theater-React-js/Search`, { replace: true })
+  };
 
   return (
     <>
@@ -52,7 +58,7 @@ const Navbar = () => {
             <ul className="navbar-nav flex flex-col pl-0 list-style-none mr-auto items-center w-full h-full justify-center">
               <li className="nav-item w-fit text-center text-white p-2 px-6 duration-200 rounded-lg cursor-pointer">
                 <div className='flex gap-2'>
-                  <form onSubmit={() => navigate(`/Movie-Theater-React-js/Search/${query}`, { replace: true })}>
+                  <form onSubmit={handleSubmit}>
                     <input required={true} type="text" value={query} onChange={(e) => setQuery(e.target.value)} placeholder='Search...' className="nav-link bg-transparent text-white border-b-2"/>
                   </form>
                 </div>

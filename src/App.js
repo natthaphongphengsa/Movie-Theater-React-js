@@ -16,8 +16,8 @@ export default function App() {
         <Route path='/Movie-Theater-React-js/Film/:movie_id' element={<Film />}/>
         <Route path='/Movie-Theater-React-js/Films/:trend' element={<Films />}/>
         <Route path='/Movie-Theater-React-js/Films/:trend/:movie_id' element={<Film />}/>
-        <Route path='/Movie-Theater-React-js/Search/:query' element={<Search />}/>
-        <Route path='/Movie-Theater-React-js/Search/:query/Film/:movie_id' element={<Film />}/>
+        <Route path='/Movie-Theater-React-js/Search/' element={<Search />}/>
+        <Route path='/Movie-Theater-React-js/Search/Film/:movie_id' element={<Film />}/>
         <Route path='/Movie-Theater-React-js/Tv' element={<Tv />}/>
       </Routes>
     </>
