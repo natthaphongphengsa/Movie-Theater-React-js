@@ -1,9 +1,11 @@
-import React, {useEffect, useState} from 'react'
+import React, {useEffect, useState, useRef} from 'react'
 import {requests, requestTrailers} from '../Data/Requests'
 import axios from 'axios'
 import {BsPlayCircle} from 'react-icons/bs'
 import { FaTicketAlt } from 'react-icons/fa';
 import * as SVGLoaders from 'svg-loaders-react';
+import YouTube from 'react-youtube';
+
 
 const Main = () =>  {
     const [trailer, setTrailers] = useState([]);
@@ -35,7 +37,10 @@ const Main = () =>  {
         }
         setLoading(false);      
     }
-
+    const unloadVideo = () => {        
+        setTrailers([]);
+    };
+    
     if(isLoading == true){
         return (
             <div className='w-full h-full p-52 relative bg-transparent z-50 flex'>
@@ -72,7 +77,7 @@ const Main = () =>  {
                             <div className="modal-dialog relative w-auto pointer-events-none">
                                 <div className="modal-content border-none shadow-lg relative flex flex-col w-full pointer-events-auto bg-white bg-clip-padding rounded-md outline-none text-current">
                                     <div className="modal-header flex flex-shrink-0 items-center justify-center rounded-t-md">
-                                        <button type="button" className="btn-close btn-close-white w-20 h-20 text-3xl text-black border-none rounded-none opacity-50 focus:shadow-none focus:outline-none focus:opacity-100 hover:text-black hover:opacity-75 hover:no-underline" data-bs-dismiss="modal" aria-label="Close">
+                                        <button onClick={unloadVideo} type="button" className="btn-close btn-close-white w-20 h-20 text-3xl text-black border-none rounded-none opacity-50 focus:shadow-none focus:outline-none focus:opacity-100 hover:text-black hover:opacity-75 hover:no-underline" data-bs-dismiss="modal" aria-label="Close">
                                         
                                         </button>
                                     </div>
@@ -80,7 +85,7 @@ const Main = () =>  {
                                         {trailer?.map((item,id) => {
                                              if(item.name.includes("Official Trailer") || item.name.includes("Trailer") ){
                                                 return (
-                                                    <iframe className='video mb-24' src={`https://www.youtube.com/embed/${item.key}`} title="YouTube video player" allowFullScreen="allowFullScreen"></iframe>
+                                                    <YouTube key={id} iframeClassName="rounded-3xl" className='video mb-24 rounded-3xl' videoId={item.key} opts={{height: '100%', width: '100%',}}></YouTube>
                                                 )
                                             }
                                            })

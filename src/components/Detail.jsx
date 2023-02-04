@@ -11,6 +11,7 @@ import { FaTicketAlt } from 'react-icons/fa';
 import Carousel from 'react-multi-carousel';
 import WithStyles from 'react-multi-carousel/lib/styles.css';
 import * as SVGLoaders from 'svg-loaders-react';
+import YouTube from 'react-youtube';
 
 const Detail = () => {
     const {movie_id} = useParams();
@@ -178,17 +179,17 @@ const Detail = () => {
                                 }
                                 return(
                                     <div key={id} className="w-full h-full duration-200 bg-white"> 
-                                            <button className="h-full w-full relative">
-                                                <MdOutlineHideImage className='text-red-600 w-full h-full'/> 
-                                                <div className='grid grid-cols-0 gap-0 place-items-center absolute top-0 left-0 bottom-0 duration-300 text-center w-full h-full opacity-0 hover:opacity-100 hover:backdrop-blur-xl'>
-                                                    <p className='truncate w-full h-fit text-sm sm:text-sm lg:text-xl md:text-xl text-slate-600'>
-                                                        {cast?.name}<br></br>
-                                                        Character<br></br>
-                                                        <AiFillCaretDown className='m-auto'/>
-                                                        {cast?.character}
-                                                    </p>
-                                                </div>
-                                            </button>                              
+                                        <button className="h-full w-full relative">
+                                            <MdOutlineHideImage className='text-red-600 w-full h-full'/> 
+                                            <div className='grid grid-cols-0 gap-0 place-items-center absolute top-0 left-0 bottom-0 duration-300 text-center w-full h-full opacity-0 hover:opacity-100 hover:backdrop-blur-xl'>
+                                                <p className='truncate w-full h-fit text-sm sm:text-sm lg:text-xl md:text-xl text-slate-600'>
+                                                    {cast?.name}<br></br>
+                                                    Character<br></br>
+                                                    <AiFillCaretDown className='m-auto'/>
+                                                    {cast?.character}
+                                                </p>
+                                            </div>
+                                        </button>                              
                                     </div>
                                 )
                              
@@ -200,7 +201,7 @@ const Detail = () => {
                             if(item.name.includes("Official Trailer") || item.name.includes("Trailer") ){
                                 return (
                                     <div data-aos="zoom-in" data-aos-duration="1500" key={id}>
-                                        <iframe className='video rounded-3xl' src={`https://www.youtube.com/embed/${item.key}`} title="YouTube video player" allowFullScreen="allowFullScreen"></iframe>
+                                        <YouTube key={id} iframeClassName="rounded-3xl" className='video mb-24 rounded-3xl' videoId={item.key} opts={{height: '100%', width: '100%',}}></YouTube>
                                     </div>
                                 )
                             }
