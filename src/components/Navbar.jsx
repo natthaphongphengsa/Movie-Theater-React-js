@@ -11,6 +11,7 @@ const Navbar = () => {
   const navRef = useRef();
   const [navBackground, setNavbar] = useState(false);
   const [query, setQuery] = useState("");
+  const navigate = useNavigate();
 
   const showNavbar = () => {
     navRef.current.classList.toggle("showNav");    
@@ -25,10 +26,6 @@ const Navbar = () => {
   }
   window.addEventListener("scroll", changeBackgroundColor);
 
-  const handleSubmit = (event) => {
-    event.preventDefault();
-    window.location.replace(`/Movie-Theater-React-js/Search/${query}`);
-  }
   function goToTop(){
     window.scrollTo({
         top: 0,
@@ -55,8 +52,8 @@ const Navbar = () => {
             <ul className="navbar-nav flex flex-col pl-0 list-style-none mr-auto items-center w-full h-full justify-center">
               <li className="nav-item w-fit text-center text-white p-2 px-6 duration-200 rounded-lg cursor-pointer">
                 <div className='flex gap-2'>
-                  <form onSubmit={handleSubmit}>
-                    <input type="text" value={query} onChange={(e) => setQuery(e.target.value)} placeholder='Search...' className="nav-link bg-transparent text-white border-b-2"/>
+                  <form onSubmit={() => navigate(`/Movie-Theater-React-js/Search/${query}`, { replace: true })}>
+                    <input required={true} type="text" value={query} onChange={(e) => setQuery(e.target.value)} placeholder='Search...' className="nav-link bg-transparent text-white border-b-2"/>
                   </form>
                 </div>
               </li>
