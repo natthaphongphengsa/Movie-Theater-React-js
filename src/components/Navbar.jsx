@@ -35,7 +35,7 @@ const Navbar = () => {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    navigate({pathname: '/Movie-Theater-React-js/Search',search: `?query=${query}`,}, { replace: true });
+    navigate({pathname: '/Movie-Theater-React-js/Search', search: `?query=${query}`,}, { replace: true });
     // navigate(`/Movie-Theater-React-js/Search`, { replace: true })
   };
 

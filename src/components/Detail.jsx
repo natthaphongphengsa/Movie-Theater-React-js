@@ -74,7 +74,7 @@ const Detail = () => {
 
     const scrollTo = () => {
         const section = document.querySelector('#goToVideo');
-        section.scrollIntoView( { behavior: "smooth", block: "end", inline: "nearest" } );
+        section.scrollIntoView( { behavior: "smooth", block: "start", inline: "start" } );
     }
     
     const responsive = {
@@ -200,7 +200,7 @@ const Detail = () => {
                         {trailers?.map((item, id) => {
                             if(item.name.includes("Official Trailer") || item.name.includes("Trailer") ){
                                 return (
-                                    <div data-aos="zoom-in" data-aos-duration="1500" key={id}>
+                                    <div data-aos="zoom-in" data-aos-duration="500" key={id} >
                                         <YouTube key={id} iframeClassName="rounded-3xl" className='video mb-24 rounded-3xl' videoId={item.key} opts={{height: '100%', width: '100%',}}></YouTube>
                                     </div>
                                 )
@@ -208,7 +208,7 @@ const Detail = () => {
                         })}
                     </div>
                     <div className={`${similarAvailable ? "visible": "hidden"} max-w-full mt-8`} data-aos="fade" data-aos-duration="1500">
-                        <Link to={`Movie`} className='px-4 font-bold text-3xl md:text-3xl flex link-light w-fit hover:link-primary duration-200 mb-3'>Similar<BiChevronRight className='mt-1'/></Link>
+                        <Link to={`/Movie-Theater-React-js/Films/Similar/${movie?.id}`} className='px-4 font-bold text-3xl md:text-3xl flex link-light w-fit hover:link-primary duration-200 mb-3'>Similar<BiChevronRight className='mt-1'/></Link>
                         <Carousel removeArrowOnDeviceType={["tablet", "mobile"]} responsive={responsive} className="lg:rounded-3xl md:rounded-3xl" keyBoardControl={true} swipeable={true} infinite="true">
                             {similarMovies?.map((similar, id) => {
                                 if(similar?.poster_path != null){

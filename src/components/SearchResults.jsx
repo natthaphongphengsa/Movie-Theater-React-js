@@ -42,7 +42,7 @@ const SearchResults = () => {
     if(movies?.length != 0){
       return (
         <>
-          <div className='pt-36 sm:px-0 container mx-auto lg:px-10'>
+          <div className='pt-36'>
             <h1 className='text-3xl px-4'>Results: {query}</h1>
             <div className='lg:p-10 p-2'>               
                     <div id={'slider'} className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 xl:grid-cols-8 gap-2 lg:gap-8 md:gap-6 mt-5 flex-col">
@@ -80,7 +80,7 @@ const SearchResults = () => {
       )
     }else{
       return (
-        <div className='pt-36 sm:px-0 container mx-auto lg:px-10'>
+        <div className='pt-36 sm:px-0 mx-auto lg:px-10'>
           <h1 className='text-3xl px-4'>No results of: {query}</h1>
         </div>
       )

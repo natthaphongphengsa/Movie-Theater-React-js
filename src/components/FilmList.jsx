@@ -6,7 +6,7 @@ import ReactPaginate from 'react-paginate';
 import * as SVGLoaders from 'svg-loaders-react';
 
 const FilmList = () => {
-  const {trend} = useParams();
+  const {trend, movie_id} = useParams();
   const [movies, setMovies] = useState([]);
   const [pageCount, setPageCount] = useState(1);
   const [currentPage, setCurrenPage] = useState(1);
@@ -21,7 +21,6 @@ const FilmList = () => {
   };
   const fetchData = async (trend, currentPage) => {
     const newletter = trend.toLowerCase().replace(" ", "_");
-    console.log(newletter);
     if(newletter == "tv"){
       await axios.get(requestFilms(true, newletter, currentPage))
       .then((response) => {        
@@ -40,7 +39,7 @@ const FilmList = () => {
       });
     }
     else{
-      await axios.get(requestFilms(false, newletter, currentPage))
+      await axios.get(requestFilms(false, newletter, currentPage, movie_id))
       .then((response) => {        
         setMovies(response.data.results);
         setPageCount(response.data.total_pages);
@@ -60,7 +59,7 @@ const FilmList = () => {
   }else{
     return (
       <>
-        <div className='pt-36 sm:px-0 container mx-auto lg:px-10'>
+        <div className='pt-36'>
           <h1 className='text-3xl px-4 text-center'>{trend}</h1>
           <div className='lg:p-10 p-2'>               
                   <div id={'slider'} className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 xl:grid-cols-8 gap-2 lg:gap-8 md:gap-6 mt-5 flex-col">

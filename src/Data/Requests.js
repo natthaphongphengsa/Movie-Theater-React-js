@@ -25,9 +25,12 @@ const requestSearchMovie = (query, page_num) => {
     return `https://api.themoviedb.org/3/search/movie?api_key=be76a96804dad9c25a604d69639cf845&query=${query}&page=${page_num}`
 }
 
-const requestFilms = (isTv, trend, page_num) => {
+const requestFilms = (isTv, trend, page_num, movie_id) => {    
     if(isTv == true){
         return `https://api.themoviedb.org/3/${trend}/popular?api_key=${apiKey}&page=${page_num}`
+    }
+    else if(trend == "similar"){
+        return requestSimilar(movie_id, page_num);
     }
     else{
         return `https://api.themoviedb.org/3/movie/${trend}?api_key=${apiKey}&page=${page_num}`
