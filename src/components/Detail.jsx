@@ -104,7 +104,7 @@ const Detail = () => {
     if(isLoading == true){
         return (
         <div className='w-full h-full p-52 fixed bg-[#001d66] z-50 flex overflow-hidden'>
-            <h1 className='left-[50%] top-[70%] relative translate-x-[-50%]'>Loading....</h1>
+            <h1 className='left-[50%] top-[50%] fixed translate-x-[-50%] translate-y-[-50%]'>Loading....</h1>
             <SVGLoaders.Puff stroke="#ffffff" width="140" height="140" className="left-[50%] top-[50%] fixed translate-x-[-50%] translate-y-[-50%]"/>
         </div>)
     }else{
@@ -165,12 +165,9 @@ const Detail = () => {
                                         <div key={id} className="w-full h-full duration-200 bg-black">                                
                                             <button className="h-full relative">
                                                 <img src={`https://image.tmdb.org/t/p/w500${cast?.profile_path}`} className="h-full w-full"/>
-                                                <div className='grid grid-cols-0 gap-0 place-items-center absolute top-0 left-0 bottom-0 duration-300 text-center w-full h-full opacity-0 hover:opacity-100 hover:backdrop-blur-xl'>
-                                                    <p className='truncate w-full h-fit text-sm sm:text-sm lg:text-xl md:text-xl'>
+                                                <div className='grid grid-cols-0 gap-0 place-items-end absolute left-0 bottom-0 duration-300 text-center w-full h-full'>
+                                                    <p className='truncate w-full h-fit text-sm sm:text-sm lg:text-xl md:text-xl backdrop-blur-xl'>
                                                         {cast?.name}<br></br>
-                                                        Character<br></br>
-                                                        <AiFillCaretDown className='m-auto'/>
-                                                        {cast?.character}
                                                     </p>
                                                 </div>
                                             </button>
@@ -181,14 +178,11 @@ const Detail = () => {
                                     <div key={id} className="w-full h-full duration-200 bg-white"> 
                                         <button className="h-full w-full relative">
                                             <MdOutlineHideImage className='text-red-600 w-full h-full'/> 
-                                            <div className='grid grid-cols-0 gap-0 place-items-center absolute top-0 left-0 bottom-0 duration-300 text-center w-full h-full opacity-0 hover:opacity-100 hover:backdrop-blur-xl'>
-                                                <p className='truncate w-full h-fit text-sm sm:text-sm lg:text-xl md:text-xl text-slate-600'>
-                                                    {cast?.name}<br></br>
-                                                    Character<br></br>
-                                                    <AiFillCaretDown className='m-auto'/>
-                                                    {cast?.character}
-                                                </p>
-                                            </div>
+                                            <div className='grid grid-cols-0 gap-0 place-items-end absolute left-0 bottom-0 duration-300 text-center w-full h-full'>
+                                                    <p className='truncate w-full h-fit text-sm sm:text-sm lg:text-xl md:text-xl backdrop-blur-xl text-black'>
+                                                        {cast?.name}<br></br>
+                                                    </p>
+                                                </div>
                                         </button>                              
                                     </div>
                                 )

@@ -27,7 +27,7 @@ const requestSearchMovie = (query, page_num) => {
 
 const requestFilms = (isTv, trend, page_num, movie_id) => {    
     if(isTv == true){
-        return `https://api.themoviedb.org/3/${trend}/popular?api_key=${apiKey}&page=${page_num}`
+        return `https://api.themoviedb.org/3/${trend}/on_the_air?api_key=${apiKey}&page=${page_num}`
     }
     else if(trend == "similar"){
         return requestSimilar(movie_id, page_num);

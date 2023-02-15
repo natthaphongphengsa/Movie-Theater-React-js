@@ -36,6 +36,8 @@ const Navbar = () => {
   const handleSubmit = (event) => {
     event.preventDefault();
     navigate({pathname: '/Movie-Theater-React-js/Search', search: `?query=${query}`,}, { replace: true });
+    showNavbar();
+    setOpen();
     // navigate(`/Movie-Theater-React-js/Search`, { replace: true })
   };
 
@@ -64,10 +66,10 @@ const Navbar = () => {
                 </div>
               </li>
               <li className="nav-item w-fit text-center text-white hover:bg-white hover:text-blue-600 p-2 px-6 duration-200 rounded-lg cursor-pointer">
-                <Link to="/Movie-Theater-React-js/Films" className="nav-link">MOVIES</Link>
+                <Link to="/Movie-Theater-React-js/Films/upcoming" className="nav-link">MOVIES</Link>
               </li>
               <li className="nav-item w-fit text-center text-white hover:bg-white hover:text-blue-600 p-2 px-6 duration-200 rounded-lg cursor-pointer">
-                <Link to="/Movie-Theater-React-js/TV" className="nav-link">TV</Link>
+                <Link to="/Movie-Theater-React-js/Tv" className="nav-link">TV</Link>
               </li>
               <li className="nav-item w-fit text-center text-white hover:bg-white hover:text-blue-600 p-2 px-6 duration-200 rounded-lg cursor-pointer">
                 <a className="nav-link" href="#">TICKETS</a>

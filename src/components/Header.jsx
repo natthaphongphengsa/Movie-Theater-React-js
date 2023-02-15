@@ -43,10 +43,11 @@ const Main = () =>  {
     
     if(isLoading == true){
         return (
-            <div className='w-full h-full p-52 relative bg-transparent z-50 flex'>
-                <h1 className='left-[50%] top-[70%] absolute translate-x-[-50%]'>Loading....</h1>
-                <SVGLoaders.Puff stroke="#ffffff" width="140" height="140" className="left-[50%] top-[50%] absolute translate-x-[-50%] translate-y-[-50%]"/>
-            </div>)
+        <div className='w-full h-full p-52 fixed bg-[#001d66] z-50 flex overflow-hidden'>
+            <h1 className='left-[50%] top-[50%] fixed translate-x-[-50%] translate-y-[-50%]'>Loading....</h1>
+            <SVGLoaders.Puff stroke="#ffffff" width="140" height="140" className="left-[50%] top-[50%] fixed translate-x-[-50%] translate-y-[-50%]"/>
+        </div>
+        )
     }
     else{
         return (
