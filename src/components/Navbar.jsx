@@ -15,6 +15,12 @@ const Navbar = () => {
 
   const showNavbar = () => {
     navRef.current.classList.toggle("showNav");    
+    if(isOpen == true){
+      setOpen(false);
+    }
+    else{
+      setOpen(true);
+    }
   }
   const changeBackgroundColor = () => {
     if(window.scrollY >= 80){
@@ -38,7 +44,6 @@ const Navbar = () => {
     navigate({pathname: '/Movie-Theater-React-js/Search', search: `?query=${query}`,}, { replace: true });
     showNavbar();
     setOpen();
-    // navigate(`/Movie-Theater-React-js/Search`, { replace: true })
   };
 
   return (
@@ -57,7 +62,7 @@ const Navbar = () => {
                   <Hamburger toggled={isOpen} toggle={setOpen} />
               </button>
             </div>
-            <ul className="navbar-nav flex flex-col pl-0 list-style-none mr-auto items-center w-full h-full justify-center">
+            <ul className="navbar-nav flex flex-col pl-0 list-style-none mr-auto items-center w-full h-full">
               <li className="nav-item w-fit text-center text-white p-2 px-6 duration-200 rounded-lg cursor-pointer">
                 <div className='flex gap-2'>
                   <form onSubmit={handleSubmit}>
@@ -66,16 +71,16 @@ const Navbar = () => {
                 </div>
               </li>
               <li className="nav-item w-fit text-center text-white hover:bg-white hover:text-blue-600 p-2 px-6 duration-200 rounded-lg cursor-pointer">
-                <Link to="/Movie-Theater-React-js/Films/upcoming" className="nav-link">MOVIES</Link>
+                <Link to="/Movie-Theater-React-js/Films/upcoming" className="nav-link" onClick={showNavbar}>MOVIES</Link>
               </li>
               <li className="nav-item w-fit text-center text-white hover:bg-white hover:text-blue-600 p-2 px-6 duration-200 rounded-lg cursor-pointer">
-                <Link to="/Movie-Theater-React-js/Tv" className="nav-link">TV</Link>
+                <Link to="/Movie-Theater-React-js/Tv" className="nav-link" onClick={showNavbar}>TV</Link>
               </li>
               <li className="nav-item w-fit text-center text-white hover:bg-white hover:text-blue-600 p-2 px-6 duration-200 rounded-lg cursor-pointer">
-                <a className="nav-link" href="#">TICKETS</a>
+                <a className="nav-link" href="#" onClick={showNavbar}>TICKETS</a>
               </li>
               <li className="lg:hidden nav-item w-fit text-center text-white hover:bg-white hover:text-blue-600 p-2 px-6 duration-200 rounded-lg cursor-pointer">
-                <a className="nav-link" href="#">SIGN IN</a>
+                <a className="nav-link" href="#" onClick={showNavbar}>SIGN IN</a>
               </li>
             </ul>          
           </div> 
@@ -84,7 +89,7 @@ const Navbar = () => {
           </div>
         </div>
       </nav>
-      <button type="button" className={`${navBackground ? "inline-block": "hidden"} z-50 fixed p-3 bg-red-600 text-white font-medium text-xs leading-tight uppercase rounded-full shadow-md hover:bg-red-700 hover:shadow-lg focus:bg-red-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-red-800 active:shadow-lg transition ease-in-out bottom-5 right-5 duration-300`} onClick={goToTop}>
+      <button data-aos="fade-left" data-aos-duration="1000" type="button" className={`${navBackground ? "inline-block": "hidden"} z-50 fixed p-3 bg-red-600 text-white leading-tight rounded-full shadow-md hover:bg-red-700 hover:shadow-lg active:bg-red-800 active:shadow-lg bottom-5 right-5`} onClick={goToTop}>
         <svg aria-hidden="true" focusable="false" data-prefix="fas" className="w-4 h-4" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path fill="currentColor" d="M34.9 289.5l-22.2-22.2c-9.4-9.4-9.4-24.6 0-33.9L207 39c9.4-9.4 24.6-9.4 33.9 0l194.3 194.3c9.4 9.4 9.4 24.6 0 33.9L413 289.4c-9.5 9.5-25 9.3-34.3-.4L264 168.6V456c0 13.3-10.7 24-24 24h-32c-13.3 0-24-10.7-24-24V168.6L69.2 289.1c-9.3 9.8-24.8 10-34.3.4z"></path></svg>
       </button>
     </>

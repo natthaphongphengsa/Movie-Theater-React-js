@@ -143,12 +143,12 @@ const Detail = () => {
                             <br></br>
                             <p className='text-lg'>{movie?.overview}</p>
                             <br></br>
-                            <div className='flex gap-2 sm:flex-row lg:flex-row md:flex-row flex-col'>
-                                <button className='bg-red-600 p-3 px-8 rounded-md hover:bg-red-500 hover:shadow-2xl hover:scale-110 duration-200 mr-4 flex justify-center'>
+                            <div className='flex gap-4 sm:flex-row lg:flex-row md:flex-row flex-col'>
+                                <button className='bg-red-600 p-3 px-8 rounded-md hover:bg-red-500 hover:shadow-2xl hover:scale-110 duration-200 flex justify-center'>
                                     <FaTicketAlt className='w-6 h-6 mr-2'/>
                                     Tickets
                                 </button>
-                                <button onClick={scrollTo} className='bg-red-600 p-3 px-8 rounded-md hover:bg-red-500 hover:shadow-2xl hover:scale-110 duration-200 mr-4 flex justify-center'>
+                                <button onClick={scrollTo} className='bg-red-600 p-3 px-8 rounded-md hover:bg-red-500 hover:shadow-2xl hover:scale-110 duration-200 flex justify-center'>
                                     <TfiVideoClapper className='w-6 h-6 mr-2'/>
                                     Trailer
                                 </button>
@@ -166,7 +166,7 @@ const Detail = () => {
                                             <button className="h-full relative">
                                                 <img src={`https://image.tmdb.org/t/p/w500${cast?.profile_path}`} className="h-full w-full"/>
                                                 <div className='grid grid-cols-0 gap-0 place-items-end absolute left-0 bottom-0 duration-300 text-center w-full h-full'>
-                                                    <p className='truncate w-full h-fit text-sm sm:text-sm lg:text-xl md:text-xl backdrop-blur-xl'>
+                                                    <p className='truncate w-full h-fit text-sm sm:text-sm lg:text-xl md:text-xl backdrop-blur-xl bg-[#00000094]'>
                                                         {cast?.name}<br></br>
                                                     </p>
                                                 </div>
@@ -179,7 +179,7 @@ const Detail = () => {
                                         <button className="h-full w-full relative">
                                             <MdOutlineHideImage className='text-red-600 w-full h-full'/> 
                                             <div className='grid grid-cols-0 gap-0 place-items-end absolute left-0 bottom-0 duration-300 text-center w-full h-full'>
-                                                    <p className='truncate w-full h-fit text-sm sm:text-sm lg:text-xl md:text-xl backdrop-blur-xl text-black'>
+                                                    <p className='truncate w-full h-fit text-sm sm:text-sm lg:text-xl md:text-xl backdrop-blur-xl bg-[#00000094]'>
                                                         {cast?.name}<br></br>
                                                     </p>
                                                 </div>
@@ -195,7 +195,7 @@ const Detail = () => {
                             if(item.name.includes("Official Trailer") || item.name.includes("Trailer") ){
                                 return (
                                     <div data-aos="zoom-in" data-aos-duration="500" key={id} >
-                                        <YouTube key={id} iframeClassName="rounded-3xl" className='video mb-24 rounded-3xl' videoId={item.key} opts={{height: '100%', width: '100%',}}></YouTube>
+                                        <YouTube key={id} iframeClassName="rounded-3xl" className='video mb-24 rounded-3xl lg:aspect-video md:aspect-video sm:aspect-video' videoId={item.key} opts={{height: '100%', width: '100%',}}></YouTube>
                                     </div>
                                 )
                             }

@@ -50,7 +50,7 @@ const SearchResults = () => {
                     <div id={'slider'} className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 xl:grid-cols-8 gap-2 lg:gap-8 md:gap-6 mt-5 flex-col">
                         {movies?.map((item, id) => (
                             <div key={id} className='relative rounded-xl lg:hover:scale-110 duration-200' id="movieRow">
-                                <div className='absolute top-0 left-0 flex justify-between w-full rounded-xl p-1 z-50'>
+                                <div className='absolute top-0 left-0 flex justify-between w-full rounded-xl p-1'>
                                     <div className='flex'>
                                         <AiFillStar className='text-star-yellow w-6 h-6'/>
                                         {item?.vote_average}

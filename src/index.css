@@ -18,7 +18,6 @@ body{
   color:rgb(245, 197, 24);
 }
 .video {
-  aspect-ratio: 16 / 9;
   width: 100%;
   height: 100%;
   box-shadow: rgb(0 0 0) 0px 0px 37px 8px;
