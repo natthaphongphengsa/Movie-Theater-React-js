@@ -47,7 +47,7 @@ const SearchResults = () => {
           <div className='pt-36'>
             <h1 className='text-3xl px-4'>Results: {query}</h1>
             <div className='lg:p-10 p-2'>               
-                    <div id={'slider'} className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 xl:grid-cols-8 gap-2 lg:gap-8 md:gap-6 mt-5 flex-col">
+                    <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 xl:grid-cols-8 gap-2 lg:gap-8 md:gap-6 mt-5 flex-col">
                         {movies?.map((item, id) => (
                             <div key={id} className='relative rounded-xl lg:hover:scale-110 duration-200' id="movieRow">
                                 <div className='absolute top-0 left-0 flex justify-between w-full rounded-xl p-1'>
@@ -57,7 +57,7 @@ const SearchResults = () => {
                                     </div>
                                     <AiOutlineHeart className='w-6 h-6'/>
                                 </div>
-                                <img className='w-full h-full rounded-xl' src={`https://image.tmdb.org/t/p/w500/${item?.poster_path}`} alt={`${item?.title}`}></img>
+                                <img className='w-full h-full rounded-xl object-cover' src={`https://image.tmdb.org/t/p/w500/${item?.poster_path}`} alt={`${item?.title}`}></img>
                                 <Link to={`Film/${item?.id}`} id={item?.id} className='absolute w-full h-full top-0 grid duration-200 cursor-pointer'></Link>
                             </div>                                        
                         ))}
