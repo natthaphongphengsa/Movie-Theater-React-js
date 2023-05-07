@@ -66,27 +66,12 @@ const Navbar = () => {
               <li className="nav-item w-fit text-center text-white p-2 px-6 duration-200 rounded-lg cursor-pointer">
                 <div className='flex gap-2'>
                   <form onSubmit={handleSubmit}>
-                    <input required={true} type="text" value={query} onChange={(e) => setQuery(e.target.value)} placeholder='Search...' className="nav-link bg-transparent text-white border-b-2"/>
+                    <input required={true} type="search" value={query} onChange={(e) => setQuery(e.target.value)} placeholder='Search...' className="nav-link bg-transparent text-white border-b-2"/>
                   </form>
                 </div>
               </li>
-              <li className="nav-item w-fit text-center text-white hover:bg-white hover:text-blue-600 p-2 px-6 duration-200 rounded-lg cursor-pointer">
-                <Link to="/Movie-Theater-React-js/Films/upcoming" className="nav-link" onClick={showNavbar}>MOVIES</Link>
-              </li>
-              <li className="nav-item w-fit text-center text-white hover:bg-white hover:text-blue-600 p-2 px-6 duration-200 rounded-lg cursor-pointer">
-                <Link to="/Movie-Theater-React-js/Tv" className="nav-link" onClick={showNavbar}>TV</Link>
-              </li>
-              <li className="nav-item w-fit text-center text-white hover:bg-white hover:text-blue-600 p-2 px-6 duration-200 rounded-lg cursor-pointer">
-                <a className="nav-link" href="#" onClick={showNavbar}>TICKETS</a>
-              </li>
-              <li className="lg:hidden nav-item w-fit text-center text-white hover:bg-white hover:text-blue-600 p-2 px-6 duration-200 rounded-lg cursor-pointer">
-                <a className="nav-link" href="#" onClick={showNavbar}>SIGN IN</a>
-              </li>
             </ul>          
           </div> 
-          <div className='hidden lg:flex text-xl text-center'>
-            <a className="nav-link text-white hover:bg-white hover:text-blue-600 p-2 px-6 w-full duration-200 rounded-lg" href="#">SIGN IN</a>
-          </div>
         </div>
       </nav>
       <button data-aos="fade-left" data-aos-duration="1000" type="button" className={`${navBackground ? "inline-block": "hidden"} z-50 fixed p-3 bg-red-600 text-white leading-tight rounded-full shadow-md hover:bg-red-700 hover:shadow-lg active:bg-red-800 active:shadow-lg bottom-5 right-5`} onClick={goToTop}>

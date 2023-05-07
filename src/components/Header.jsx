@@ -2,7 +2,7 @@ import React, {useEffect, useState, useRef} from 'react'
 import {requests, requestTrailers} from '../Data/Requests'
 import axios from 'axios'
 import {BsPlayCircle} from 'react-icons/bs'
-import { FaTicketAlt } from 'react-icons/fa';
+import { FaPlay } from 'react-icons/fa';
 import * as SVGLoaders from 'svg-loaders-react';
 import YouTube from 'react-youtube';
 
@@ -58,8 +58,8 @@ const Main = () =>  {
                             <h1 className='text-4xl'>{randomMovie?.title}</h1>
                             <div className='flex gap-2 mb-2'>
                                 <button className='bg-red-600 p-3 px-8 mt-2 rounded-md hover:bg-red-500 hover:shadow-2xl hover:scale-110 duration-200 mr-4 flex justify-center'>
-                                    <FaTicketAlt className='w-6 h-6 mr-2'/>
-                                    Ticket
+                                    <FaPlay className='w-6 h-6 mr-2'/>
+                                    Watch now
                                 </button>
                             </div>
                             <p>

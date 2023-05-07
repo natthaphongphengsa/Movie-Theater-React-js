@@ -4,7 +4,6 @@ import Navbar from './components/Navbar';
 import Home from './pages/Home'
 import Film from './pages/Film'
 import Films from './pages/Films'
-import Tv from './pages/Tv'
 import Search from './pages/Search';
 
 export default function App() {
@@ -19,7 +18,6 @@ export default function App() {
         <Route path='/Movie-Theater-React-js/Films/:trend/:movie_id/:movie_id' element={<Film />}/>
         <Route path='/Movie-Theater-React-js/Search/' element={<Search />}/>
         <Route path='/Movie-Theater-React-js/Search/Film/:movie_id' element={<Film />}/>
-        <Route path='/Movie-Theater-React-js/Tv' element={<Tv />}/>
       </Routes>
     </>
   );
