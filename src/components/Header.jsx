@@ -12,22 +12,27 @@ const Main = () =>  {
     const [randomMovie, setRandomMovie] = useState([]);
     const [isLoading, setLoading] = useState(true);
 
-    useEffect(()=> {  
+    useEffect(()=> {
         fetchData(null);
     },[]);
         
     const fetchData = async (id) => {
-        if(id == null){
-            const getData = async () => {
-                await axios.get(requests.requestUpComing).then((response) => {
-                    setRandomMovie(response.data.results[Math.floor(Math.random() * response.data.results.length)]);
+        
+        if(id == null){            
+            const fristLoad = requests.requestUpComing.toString() + "1".toString();
+
+            const getData = async () => {             
+                await axios.get(fristLoad).then((response) => {    
+                    const randomFilmArray = Math.floor(Math.random() * (response.data.results.length - 1) + 1);
+
+                    setRandomMovie(response.data.results[randomFilmArray]);
                 })
             };
-            getData();
+
+            getData();  
         }
         else{
             const FetchUrl = requestTrailers(id);
-
             const getTrailer = async () => {
                 await axios.get(FetchUrl).then((response) => {
                     setTrailers(response.data.results);
@@ -37,6 +42,7 @@ const Main = () =>  {
         }
         setLoading(false);      
     }
+
     const unloadVideo = () => {        
         setTrailers([]);
     };
@@ -51,9 +57,9 @@ const Main = () =>  {
     }
     else{
         return (
-            <div className='w-full h-[700px] text-white'>
+            <div className='w-full h-[1200px] text-white'>
                 <div className='w-full h-full'>
-                    <div className='absolute w-full h-[700px] bg-gradient-to-r from-black'>
+                    <div className='absolute w-full h-[1200px] bg-gradient-to-r from-black'>
                         <div className='absolute lg:top-[30%] top-[25%] w-full md:w-[50%] lg:p-10 p-2' data-aos="fade-left" data-aos-duration="1000">
                             <h1 className='text-4xl'>{randomMovie?.title}</h1>
                             <div className='flex gap-2 mb-2'>
@@ -95,7 +101,7 @@ const Main = () =>  {
                             </div>
                         </div>
                     </div>
-                    <img className='w-full h-full object-cover bg-center' src={`https://image.tmdb.org/t/p/original/${randomMovie?.backdrop_path}`} alt={randomMovie?.title}></img>
+                    <img className='w-full h-full object-cover bg-center' src={`https://image.tmdb.org/t/p/original${randomMovie?.backdrop_path}`} alt={randomMovie?.title}></img>
                 </div>  
             </div>
         )
