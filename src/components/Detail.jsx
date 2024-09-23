@@ -5,7 +5,7 @@ import { BrowserRouter as Router, Route, Routes, Link, useParams} from "react-ro
 import { AiFillStar, AiFillAudio, AiFillCaretDown } from 'react-icons/ai';
 import { BiTimeFive, BiCategory, BiWorld, BiChevronRight } from 'react-icons/bi';
 import { BsCalendarDateFill, BsFilm } from 'react-icons/bs';
-import { MdLanguage, MdOutlineHideImage } from 'react-icons/md';
+import { MdLanguage, MdPerson } from 'react-icons/md';
 import { TfiText,TfiVideoClapper } from 'react-icons/tfi';
 import { FaTicketAlt } from 'react-icons/fa';
 import Carousel from 'react-multi-carousel';
@@ -173,7 +173,7 @@ const Detail = () => {
                                 return(
                                     <div key={id} className="w-full h-full duration-200 bg-white"> 
                                         <button className="h-full w-full relative">
-                                            <MdOutlineHideImage className='text-red-600 w-full h-full'/> 
+                                        <MdPerson className='w-full h-full bg-[#141414]'/> 
                                             <div className='grid grid-cols-0 gap-0 place-items-end absolute left-0 bottom-0 duration-300 text-center w-full h-full'>
                                                     <p className='truncate w-full h-fit text-sm sm:text-sm lg:text-xl md:text-xl backdrop-blur-xl bg-[#00000094]'>
                                                         {cast?.name}<br></br>
@@ -214,7 +214,7 @@ const Detail = () => {
                                     <div className="w-full h-full duration-200 p-2 lg:rounded-3xl">  
                                         <div className='bg-white w-full h-full lg:rounded-3xl'>
                                             <button onClick={() => FetchData(similar?.id)} key={id} className="h-full w-full relative">
-                                                <MdOutlineHideImage className='text-red-600 w-full h-full'/> 
+                                            <MdPerson className='w-full h-full bg-[#141414]'/> 
                                                 <div className='grid grid-cols-0 gap-0 place-items-center absolute top-0 left-0 bottom-0 duration-300 text-center w-full h-full rounded-3xl opacity-0 sm:opacity-100 lg:hover:opacity-100 hover:backdrop-blur-xl'>
                                                         <p className='truncate w-full h-fit text-sm sm:text-sm lg:text-xl md:text-xl text-slate-600'>
                                                             {similar?.title}<br></br>
