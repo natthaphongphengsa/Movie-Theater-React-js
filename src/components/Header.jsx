@@ -63,10 +63,8 @@ const Main = () =>  {
                         <div className='absolute lg:top-[30%] top-[25%] w-full md:w-[50%] lg:p-10 p-2' data-aos="fade-left" data-aos-duration="1000">
                             <h1 className='text-4xl'>{randomMovie?.title}</h1>
                             <div className='flex gap-2 mb-2'>
-                                <button className='bg-red-600 p-3 px-8 mt-2 rounded-md hover:bg-red-500 hover:shadow-2xl hover:scale-110 duration-200 mr-4 flex justify-center'>
-                                    <FaPlay className='w-6 h-6 mr-2'/>
-                                    Watch now
-                                </button>
+                            <button onClick={() => fetchData(randomMovie?.id)} className='bg-red-600 p-3 px-8 mt-2 rounded-md hover:bg-red-500 hover:shadow-2xl hover:scale-110 duration-200 mr-4 flex justify-center' data-bs-toggle="modal" data-bs-target="#videoplayer"><FaPlay className='w-6 h-6 mr-2'/>
+                            Trailer</button>   
                             </div>
                             <p>
                                 Relase: {randomMovie?.release_date} 
@@ -79,7 +77,7 @@ const Main = () =>  {
                                 {randomMovie?.overview}
                             </p>
                         </div>  
-                        <button onClick={() => fetchData(randomMovie?.id)} className='play-btn absolute p-2 rounded-lg mt-2 top-50 right-[30%] top-[40%] sm:top-[42%] hover:text-blue-600' data-bs-toggle="modal" data-bs-target="#videoplayer"><BsPlayCircle className='w-12 h-12'/></button>   
+
                         <div className="modal fade fixed top-0 left-0 hidden w-full h-full outline-none overflow-x-hidden overflow-y-auto" id="videoplayer" data-bs-backdrop="static" data-bs-keyboard="false" aria-labelledby="staticBackdropLabel" aria-hidden="true">
                             <div className="modal-dialog relative w-auto pointer-events-none">
                                 <div className="modal-content border-none shadow-lg relative lg:h-full md:h-full sm:h-full h-[100vh] flex flex-col w-full pointer-events-auto bg-white bg-clip-padding rounded-md outline-none text-current">

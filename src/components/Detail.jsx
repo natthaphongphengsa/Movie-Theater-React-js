@@ -212,13 +212,11 @@ const Detail = () => {
                                 }
                                 return (
                                     <div className="w-full h-full duration-200 p-2 lg:rounded-3xl">  
-                                        <div className='bg-white w-full h-full lg:rounded-3xl'>
+                                        <div className='bg-black w-full h-full lg:rounded-3xl'>
                                             <button onClick={() => FetchData(similar?.id)} key={id} className="h-full w-full relative">
-                                            <MdPerson className='w-full h-full bg-[#141414]'/> 
                                                 <div className='grid grid-cols-0 gap-0 place-items-center absolute top-0 left-0 bottom-0 duration-300 text-center w-full h-full rounded-3xl opacity-0 sm:opacity-100 lg:hover:opacity-100 hover:backdrop-blur-xl'>
                                                         <p className='truncate w-full h-fit text-sm sm:text-sm lg:text-xl md:text-xl text-slate-600'>
                                                             {similar?.title}<br></br>
-                                                            IMDB: {similar?.vote_average}
                                                         </p>
                                                 </div>
                                             </button >
